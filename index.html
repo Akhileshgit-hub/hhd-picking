@@ -58,7 +58,7 @@ input:focus{border-color:var(--accent)}
 <body>
 <div class="screen active" id="screen-login">
   <div class="logo">
-    <div class="icon" style="font-size:36px">&#128230;</div>
+    <div class="icon">&#128230;</div>
     <h1>HHD Picking Tool</h1>
     <p>RC Lite - Manual Picking</p>
   </div>
@@ -68,13 +68,13 @@ input:focus{border-color:var(--accent)}
   </div>
   <div class="alert alert-error" id="loginAlert"><span>&#9888;</span><span id="loginAlertMsg"></span></div>
   <button class="btn btn-primary" id="loginBtn" onclick="doLogin()">Start Picking Session</button>
-  <p class="gen-info">Last updated: 26/7/2026, 11:50:05 pm</p>
+  <p class="gen-info">Last updated: 27/7/2026, 12:05:47 am</p>
 </div>
 
 <div class="screen" id="screen-pick">
   <div class="chips">
-    <div class="chip">? <strong id="chipEmp">?</strong></div>
-    <div class="chip">? <strong id="chipPicked">0</strong> picked</div>
+    <div class="chip">&#128100; <strong id="chipEmp">-</strong></div>
+    <div class="chip">&#10003; <strong id="chipPicked">0</strong> picked</div>
   </div>
   <div>
     <div class="progress-info" style="margin-bottom:8px">
@@ -83,16 +83,16 @@ input:focus{border-color:var(--accent)}
     <div class="progress-wrap"><div class="progress-bar" id="progressBar" style="width:0%"></div></div>
   </div>
   <div class="pick-card" id="pickCard">
-    <div class="pick-seq" id="pickSeq">Item 1 of 0</div>
+    <div class="pick-seq" id="pickSeq">ITEM 1 OF 0</div>
     <div class="pick-location">
       <div class="loc-icon">&#128205;</div>
       <div class="loc-text">
         <div class="loc-label">Go to location</div>
-        <div class="loc-val" id="pickLocation">?</div>
+        <div class="loc-val" id="pickLocation">-</div>
       </div>
     </div>
     <div class="pick-wsn-label">Scan or type WSN</div>
-    <div class="pick-wsn-val" id="pickWSN">?</div>
+    <div class="pick-wsn-val" id="pickWSN">-</div>
     <div class="scan-wrap">
       <input type="text" id="scanInput" placeholder="Scan WSN here..." autocomplete="off" spellcheck="false" onkeydown="if(event.key==='Enter')confirmScan()">
       <button class="scan-btn" onclick="confirmScan()">&#8594;</button>
@@ -103,7 +103,7 @@ input:focus{border-color:var(--accent)}
 </div>
 
 <div class="screen" id="screen-done">
-   <div class="done-anim" style="font-family:Arial,sans-serif">&#10024;</div>
+  <div class="done-anim">&#10024;</div>
   <div class="done-title">All WSNs Picked!</div>
   <div class="done-sub" id="doneSub">Session complete</div>
   <div class="divider"></div>
@@ -117,7 +117,7 @@ let picked = {};
 let state = {empId:'',total:0,pickedCount:0,currentWSN:'',currentLocation:'',startTime:null,skipped:[],pickedList:[]};
 
 function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('screen-'+id).classList.add('active')}
-function showAlert(elId,msg,type){const el=document.getElementById(elId);el.className='alert alert-'+type+' show';if(elId==='pickAlert'){document.getElementById('pickAlertIcon').textContent=type==='error'?'?':'??';document.getElementById('pickAlertMsg').textContent=msg}else{document.getElementById(elId+'Msg').textContent=msg}}
+function showAlert(elId,msg,type){const el=document.getElementById(elId);el.className='alert alert-'+type+' show';if(elId==='pickAlert'){document.getElementById('pickAlertIcon').textContent=type==='error'?'X':'!';document.getElementById('pickAlertMsg').textContent=msg}else{document.getElementById(elId+'Msg').textContent=msg}}
 function hideAlert(elId){document.getElementById(elId).classList.remove('show')}
 function updateProgress(){const pct=state.total>0?(state.pickedCount/state.total*100):0;document.getElementById('progressBar').style.width=pct+'%';document.getElementById('progressLabel').textContent=state.pickedCount+' / '+state.total;document.getElementById('chipPicked').textContent=state.pickedCount}
 
@@ -143,7 +143,7 @@ function loadNext(){
   state.currentLocation=next.location;
   document.getElementById('pickLocation').textContent=next.location;
   document.getElementById('pickWSN').textContent=next.wsn;
-  document.getElementById('pickSeq').textContent='Item '+(state.pickedCount+1)+' of '+state.total;
+  document.getElementById('pickSeq').textContent='ITEM '+(state.pickedCount+1)+' OF '+state.total;
   document.getElementById('scanInput').value='';
   document.getElementById('scanInput').focus();
   hideAlert('pickAlert');
@@ -162,7 +162,7 @@ function confirmScan(){
 }
 
 function skipWSN(){
-  if(!confirm('Skip WSN: '+state.currentWSN+'?'))return;
+  if(!confirm('Skip WSN: '+state.currentWSN+'?\nThis will be flagged for review.'))return;
   state.skipped.push({wsn:state.currentWSN,location:state.currentLocation});
   picked[state.currentWSN]='skipped';
   loadNext();
@@ -173,9 +173,15 @@ function showDone(){
   const mins=Math.floor(elapsed/60),secs=elapsed%60;
   document.getElementById('doneSub').textContent='Employee: '+state.empId;
   let rows=state.pickedList.map(p=>'<tr><td style="padding:4px 8px;font-family:monospace;font-size:12px">'+p.wsn+'</td><td style="padding:4px 8px;font-size:12px">'+p.location+'</td><td style="padding:4px 8px;font-size:12px;color:var(--muted)">'+p.time+'</td></tr>').join('');
-  document.getElementById('doneStats').innerHTML='<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:center;margin-bottom:16px"><div><div style="font-size:32px;font-weight:800;color:var(--success)">'+state.pickedCount+'</div><div style="font-size:12px;color:var(--muted)">WSNs Picked</div></div><div><div style="font-size:32px;font-weight:800;color:var(--accent)">'+mins+'m '+secs+'s</div><div style="font-size:12px;color:var(--muted)">Time Taken</div></div>'+(state.skipped.length>0?'<div style="grid-column:1/-1"><div style="font-size:24px;font-weight:800;color:var(--warn)">'+state.skipped.length+'</div><div style="font-size:12px;color:var(--muted)">Skipped</div></div>':'')+'</div><div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse"><tr style="color:var(--muted)"><th style="padding:4px 8px;text-align:left;font-size:11px">WSN</th><th style="padding:4px 8px;text-align:left;font-size:11px">Location</th><th style="padding:4px 8px;text-align:left;font-size:11px">Time</th></tr>'+rows+'</table></div>';
+  document.getElementById('doneStats').innerHTML=
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:center;margin-bottom:16px">'+
+    '<div><div style="font-size:32px;font-weight:800;color:var(--success)">'+state.pickedCount+'</div><div style="font-size:12px;color:var(--muted)">WSNs Picked</div></div>'+
+    '<div><div style="font-size:32px;font-weight:800;color:var(--accent)">'+mins+'m '+secs+'s</div><div style="font-size:12px;color:var(--muted)">Time Taken</div></div>'+
+    (state.skipped.length>0?'<div style="grid-column:1/-1"><div style="font-size:24px;font-weight:800;color:var(--warn)">'+state.skipped.length+'</div><div style="font-size:12px;color:var(--muted)">Skipped</div></div>':'')+
+    '</div>'+
+    '<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse"><tr style="color:var(--muted)"><th style="padding:4px 8px;text-align:left;font-size:11px">WSN</th><th style="padding:4px 8px;text-align:left;font-size:11px">Location</th><th style="padding:4px 8px;text-align:left;font-size:11px">Time</th></tr>'+rows+'</table></div>';
   showScreen('done');
-  setTimeout(()=>alert('? PICKING COMPLETE!\n\nEmployee: '+state.empId+'\nPicked: '+state.pickedCount+' WSNs\nTime: '+mins+'m '+secs+'s'),400);
+  setTimeout(()=>alert('PICKING COMPLETE!\n\nEmployee: '+state.empId+'\nPicked: '+state.pickedCount+' WSNs\nTime: '+mins+'m '+secs+'s'),400);
 }
 
 function resetApp(){
