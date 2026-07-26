@@ -68,7 +68,7 @@ input:focus{border-color:var(--accent)}
   </div>
   <div class="alert alert-error" id="loginAlert"><span>&#9888;</span><span id="loginAlertMsg"></span></div>
   <button class="btn btn-primary" id="loginBtn" onclick="doLogin()">Start Picking Session</button>
-  <p class="gen-info">Last updated: 26/7/2026, 11:20:25 pm</p>
+  <p class="gen-info">Last updated: 26/7/2026, 11:24:04 pm</p>
 </div>
 
 <div class="screen" id="screen-pick">
@@ -95,7 +95,7 @@ input:focus{border-color:var(--accent)}
     <div class="pick-wsn-val" id="pickWSN">?</div>
     <div class="scan-wrap">
       <input type="text" id="scanInput" placeholder="Scan WSN here..." autocomplete="off" spellcheck="false" onkeydown="if(event.key==='Enter')confirmScan()">
-      <button class="scan-btn" onclick="confirmScan()">?</button>
+      <button class="scan-btn" onclick="confirmScan()">&#8594;</button>
     </div>
   </div>
   <div class="alert" id="pickAlert"><span id="pickAlertIcon">&#9888;</span><span id="pickAlertMsg"></span></div>
@@ -103,7 +103,7 @@ input:focus{border-color:var(--accent)}
 </div>
 
 <div class="screen" id="screen-done">
-   <div class="done-anim">&#127881;</div>
+   <div class="done-anim" style="font-family:Arial,sans-serif">&#10024;</div>
   <div class="done-title">All WSNs Picked!</div>
   <div class="done-sub" id="doneSub">Session complete</div>
   <div class="divider"></div>
