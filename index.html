@@ -68,7 +68,7 @@ input:focus{border-color:var(--accent)}
   </div>
   <div class="alert alert-error" id="loginAlert"><span>&#9888;</span><span id="loginAlertMsg"></span></div>
   <button class="btn btn-primary" id="loginBtn" onclick="doLogin()">Start Picking Session</button>
-  <p class="gen-info">Last updated: 28/7/2026, 1:59:36 pm</p>
+  <p class="gen-info">Last updated: 28/7/2026, 4:16:24 pm</p>
 </div>
 
 <div class="screen" id="screen-pick">
@@ -112,7 +112,7 @@ input:focus{border-color:var(--accent)}
 </div>
 
 <script>
-const DB = {"3935197":[{"wsn":"2PZGCY_F","location":"GRD1044B1"},{"wsn":"2P8Q41_N","location":"GRD1044B1"},{"wsn":"2R5ELR_N","location":"GRD1044B1"},{"wsn":"2Q82AW_J","location":"GRD1044D4"},{"wsn":"2QG3YF_X","location":"GRD1044D4"},{"wsn":"2QQXHO_L","location":"GRD1044D5"},{"wsn":"2Q05Q3_R","location":"GRD1044D6"},{"wsn":"2PZL7X_L","location":"GRD1044D6"},{"wsn":"2PZW2Z_D","location":"GRD1044D6"},{"wsn":"2R5BAH_H","location":"GRD1044D8"},{"wsn":"2RM9JS_R","location":"GRD1044D8"},{"wsn":"2Q9JMC_J","location":"GRD1044D8"},{"wsn":"2QFXSK_Z","location":"GRD1044D8"},{"wsn":"2PJFCC_J","location":"GRD1044D8"},{"wsn":"2RJW6X_P","location":"GRD1044D8"},{"wsn":"2OSP4F_B","location":"GRD1044D8"},{"wsn":"2Q65B9_F","location":"GRD1044D8"},{"wsn":"2PJZRR_J","location":"GRD1044D8"},{"wsn":"2P0ML6_X","location":"GRD1044D8"},{"wsn":"2QDLZR_F","location":"GRD1044D8"},{"wsn":"2KIUPE_P","location":"GRD1044D8"},{"wsn":"2PZ1EW_P","location":"GRD1044D8"},{"wsn":"2PPRT1_P","location":"GRD1045D4"},{"wsn":"2PH5A0_P","location":"GRD1045D4"},{"wsn":"2QH6UC_V","location":"GRD1045D4"},{"wsn":"2QHI0V_F","location":"GRD1045D4"},{"wsn":"2QW16K_R","location":"GRD1045D4"},{"wsn":"2Q1F9K_L","location":"GRD1045D8"},{"wsn":"2S0W4V_H","location":"GRD1045D8"},{"wsn":"2R5Z0F_P","location":"GRD1045D8"},{"wsn":"2S28OW_X","location":"GRD1045D8"},{"wsn":"2QQOPK_L","location":"GRD1045D8"},{"wsn":"2R4IC8_N","location":"GRD1045D8"},{"wsn":"2OSRO4_Z","location":"GRD1045D8"},{"wsn":"2Q7EWB_R","location":"GRD1046B1"},{"wsn":"2R44LG_F","location":"GRD1046D2"},{"wsn":"2QQ9FC_J","location":"GRD1046D2"},{"wsn":"2RLBUG_H","location":"GRD1113B1"},{"wsn":"2NT2LO_D","location":"GRD1113B1"},{"wsn":"2QXL86_D","location":"GRD1113D6"},{"wsn":"2SCNOM_X","location":"GRD1113D6"},{"wsn":"2REIOV_D","location":"GRD1113D6"},{"wsn":"2QGO3Q_H","location":"GRD1154C1"},{"wsn":"2QHY7U_X","location":"GRD1154C5"},{"wsn":"2PQZ4T_X","location":"GRD1154C5"},{"wsn":"2SN8PP_D","location":"GRD1157B1"},{"wsn":"2SH35N_V","location":"GRD1157C5"},{"wsn":"2S1G2J_L","location":"GRD1157C5"},{"wsn":"2RTA2D_B","location":"GRD1157C5"}]};
+const DB = {"3900117":[{"wsn":"2NL0J2_R","location":"GRD1066B1"},{"wsn":"2NL3AK_P","location":"GRD1066B1"},{"wsn":"2NL0JR_H","location":"GRD1066C1"},{"wsn":"2NL3AJ_B","location":"GRD1066C1"},{"wsn":"2NL0JD_B","location":"GRD1066C1"},{"wsn":"2NL3AG_J","location":"GRD1066C1"},{"wsn":"2NL0JT_F","location":"GRD1066C1"},{"wsn":"2NL0JE_F","location":"GRD1066C1"},{"wsn":"2NU9BK_T","location":"GRD1066C1"},{"wsn":"2NU9E3_D","location":"GRD1066C1"},{"wsn":"2MWU3C_D","location":"GRD1066C1"},{"wsn":"2MH87I_Z","location":"GRD1066C1"},{"wsn":"2NL0J3_B","location":"GRD1067D1"}]};
 let picked = {};
 let state = {empId:'',total:0,pickedCount:0,currentWSN:'',currentLocation:'',startTime:null,skipped:[],pickedList:[]};
 
