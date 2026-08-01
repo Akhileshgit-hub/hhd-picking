@@ -68,7 +68,7 @@ input:focus{border-color:var(--accent)}
   </div>
   <div class="alert alert-error" id="loginAlert"><span>&#9888;</span><span id="loginAlertMsg"></span></div>
   <button class="btn btn-primary" id="loginBtn" onclick="doLogin()">Start Picking Session</button>
-  <p class="gen-info">Last updated: 31/7/2026, 10:39:55 am</p>
+  <p class="gen-info">Last updated: 1/8/2026, 12:10:55 pm</p>
 </div>
 
 <div class="screen" id="screen-pick">
@@ -112,7 +112,7 @@ input:focus{border-color:var(--accent)}
 </div>
 
 <script>
-const DB = {"3876189":[{"wsn":"2T7RRC_Z","location":"GRD1024C1"},{"wsn":"2SOFDO_X","location":"GRD1024C1"},{"wsn":"2SOOBT_L","location":"GRD1024C1"},{"wsn":"2SLCRU_T","location":"GRD1026C2"},{"wsn":"2SNL5H_X","location":"GRD1026C3"},{"wsn":"2RN01N_D","location":"GRD1026C3"},{"wsn":"2PXUSD_D","location":"GRD1026C3"},{"wsn":"2S9B7R_Z","location":"GRD1046D3"},{"wsn":"2RU1K1_X","location":"GRD1046D3"},{"wsn":"2T23GN_J","location":"GRD1155B1"},{"wsn":"2SH6U0_B","location":"GRD1155B1"},{"wsn":"2PYDBY_P","location":"GRD1155C1"},{"wsn":"2M040F_B","location":"GRD1155C1"},{"wsn":"2ST8CD_H","location":"GRD1155C1"},{"wsn":"2PR0FB_T","location":"GRD1155C1"},{"wsn":"2S9CPZ_D","location":"GRD1155C1"},{"wsn":"2RDSJW_X","location":"GRD1155C1"},{"wsn":"2THPNF_N","location":"GRD1155C1"},{"wsn":"2K52NM_F","location":"GRD1155C1"},{"wsn":"2SZAMB_L","location":"GRD1155C1"},{"wsn":"2QYIBV_H","location":"GRD1155C1"},{"wsn":"2R6COC_V","location":"GRD1155C1"},{"wsn":"2SGJKF_J","location":"GRD1164B1"}]};
+const DB = {"3876189":[{"wsn":"2PBF30_N","location":"GRD1009D7"},{"wsn":"2RLKBL_H","location":"GRD1009D7"},{"wsn":"2T5DWT_T","location":"GRD1010B1"},{"wsn":"2SSVRH_B","location":"GRD1010D1"},{"wsn":"2SNRIJ_R","location":"GRD1010D1"},{"wsn":"2SHLOM_F","location":"GRD1014C1"},{"wsn":"2TGAVN_D","location":"GRD1014D7"},{"wsn":"2TOWQB_F","location":"GRD1014D7"},{"wsn":"2SP02F_R","location":"GRD1028B1"},{"wsn":"2S9663_Z","location":"GRD1028C4"},{"wsn":"2SHF2R_X","location":"GRD1028C4"}]};
 let picked = {};
 let state = {empId:'',total:0,pickedCount:0,currentWSN:'',currentLocation:'',startTime:null,skipped:[],pickedList:[]};
 
